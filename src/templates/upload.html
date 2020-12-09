@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flask App pour typer votre document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header>
+    <div class="container">
+        <h1 class="logo">Typer votre document</h1>
+    </div>
+</header>
+
+<div class="container">
+    {% block content %}
+    <p></p>
+    <form id="form1" method="post" action="/api/upload" enctype="multipart/form-data">
+        <div>
+            <input id="File1" type="file" name="myfile"/>  <!--后台代码中获取文件是通过form的name来标识的-->
+            <input type="submit">Envoyer</input>
+        </div>
+    </form>
+    {% endblock %}
+</div>
+</body>
+</html>

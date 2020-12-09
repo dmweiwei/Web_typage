@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Flask App pour typer votre document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<div class="results">
+    <body>
+        <header>
+            <div class="container">
+                <h1 class="logo">Typage de votre document</h1>
+            </div>
+        </header>
+        <ul class class="space-y-4">
+            <li>
+                <div class="w-64 h-3 bg-gradient-to-br from-fuchsia-500 to-purple-600">{{ top1name }} : {{ top1pourcentage}}</div>
+            </li>
+            <li>
+                <div class="w-56 h-3 bg-gradient-to-br from-fuchsia-500 to-purple-600">{{ top2name }} : {{ top2pourcentage}}</div>
+            </li>
+            <li>
+                <div class="w-48 h-3 bg-gradient-to-br from-fuchsia-500 to-purple-600">{{ top3name }} : {{ top3pourcentage}}</div>
+            </li>
+        </ul>
+    </body>
+</div>
+
+</html>
