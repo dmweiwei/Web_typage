@@ -1,0 +1,7 @@
+﻿v1.1.0
+
+v1.0.0-------------------------------
+Author: MDG
+Date: 09/12/2020
+Message:
+- Version basique pour ce programme

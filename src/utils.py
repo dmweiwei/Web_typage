@@ -4,6 +4,7 @@ from nltk.stem.snowball import FrenchStemmer
 from nltk.corpus import stopwords
 import joblib
 from itertools import islice
+import csv
 
 
 
@@ -83,5 +84,15 @@ def prediction(content_tfidf):
         logger.error(message)
 
 
-def show_top3_proba_typage(predict_proba_dico):
-    pass
+def get_typage_alpha(typage_num):
+    """
+    Fonction de trouver le typage alphabétique à partir du typage numérique
+    :param typage_num:
+    :return:
+    """
+    with open('code_typage_commun.csv', 'r') as file:
+        reader = csv.reader(file, delimiter = ';')
+        for row in reader:
+            if typage_num in row:
+                return row[1]
+

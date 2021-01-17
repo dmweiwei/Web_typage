@@ -5,3 +5,4 @@ Flask~=1.1.2
 joblib~=0.17.0
 Werkzeug~=1.0.1
 flask-sqlalchemy
+flask_login==0.5.0

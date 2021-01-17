@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Flask App pour typer votre document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
-<!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">-->
-<!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-social@1/bin/bulma-social.min.css">-->
 </head>
 <body>
 <section class="hero is-primary is-fullheight" xmlns="http://www.w3.org/1999/html">
@@ -15,7 +13,7 @@
             <div class="columns is-centered">
                 <div class="column is-6">
                     <div class="box">
-                        <h1 class="title has-text-primary">Résultat du typage</h1>
+                        <h1 class="title has-text-primary">Prédiction sur le typage</h1>
                         <ul class="block-list is-outlined is-primary pb-2">
                             <li class="is-large pb-1"><strong>{{ top1name }} : {{ top1pourcentage }}%</strong></li>
                             <div class="bd-snippet-preview mb-4">
@@ -30,10 +28,13 @@
                                 <progress class="progress is-primary is-large" value={{ top3pourcentage }} max="100"></progress>
                             </div>
                         </ul>
+                        <h1 class="title has-text-info mt-4">{{message}}</h1>
+<!--                        <p class="has-text-info"><strong>{{typage_du_document_alpha}}</strong></p>-->
                     </div>
                     <div class="container mt-6">
                         <div class="columns is-centered">
-                            <a href="/" class="button is-link has-text-primary is-primary is-inverted is-rounded"><strong>Retour au formulaire</strong></a>
+                            <a href="/upload" class="button is-link has-text-primary is-primary is-inverted is-rounded">
+                                <strong>Retour au formulaire</strong></a>
                         </div>
                     </div>
                 </div>
