@@ -5,7 +5,7 @@ from nltk.corpus import stopwords
 import joblib
 from itertools import islice
 
-from src.settings import ALLOWED_EXTENSIONS
+
 
 logging.config.fileConfig('logging.ini')
 logger = logging.getLogger('utils')

@@ -1,30 +1,44 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Flask App pour typer votre document</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+<!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">-->
+<!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-social@1/bin/bulma-social.min.css">-->
 </head>
-
-<div class="results">
-    <body>
-        <header>
-            <div class="container">
-                <h1 class="logo">Typage de votre document</h1>
+<body>
+<section class="hero is-primary is-fullheight" xmlns="http://www.w3.org/1999/html">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-6">
+                    <div class="box">
+                        <h1 class="title has-text-primary">Résultat du typage</h1>
+                        <ul class="block-list is-outlined is-primary pb-2">
+                            <li class="is-large pb-1"><strong>{{ top1name }} : {{ top1pourcentage }}%</strong></li>
+                            <div class="bd-snippet-preview mb-4">
+                                <progress class="progress is-primary is-large" value={{ top1pourcentage }} max="100"></progress>
+                            </div>
+                            <li class="is-large pb-1">{{ top2name }} : {{ top2pourcentage }}%</li>
+                            <div class="bd-snippet-preview mb-4">
+                                <progress class="progress is-primary is-large" value={{ top2pourcentage }} max="100"></progress>
+                            </div>
+                            <li class="is-large pb-1">{{ top3name }} : {{ top3pourcentage }}%</li>
+                            <div class="bd-snippet-preview mb-1">
+                                <progress class="progress is-primary is-large" value={{ top3pourcentage }} max="100"></progress>
+                            </div>
+                        </ul>
+                    </div>
+                    <div class="container mt-6">
+                        <div class="columns is-centered">
+                            <a href="/" class="button is-link has-text-primary is-primary is-inverted is-rounded"><strong>Retour au formulaire</strong></a>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </header>
-        <ul class class="space-y-4">
-            <li>
-                <div class="w-64 h-3 bg-gradient-to-br from-fuchsia-500 to-purple-600">{{ top1name }} : {{ top1pourcentage}}</div>
-            </li>
-            <li>
-                <div class="w-56 h-3 bg-gradient-to-br from-fuchsia-500 to-purple-600">{{ top2name }} : {{ top2pourcentage}}</div>
-            </li>
-            <li>
-                <div class="w-48 h-3 bg-gradient-to-br from-fuchsia-500 to-purple-600">{{ top3name }} : {{ top3pourcentage}}</div>
-            </li>
-        </ul>
-    </body>
-</div>
-
-</html>
+        </div>
+    </div>
+</section>
+</body>

@@ -1,3 +1,3 @@
 
 # Les extentions autorisés
-ALLOWED_EXTENSIONS = set(['txt', 'rxt'])
+ALLOWED_EXTENSIONS = set(['.txt', '.rxt'])

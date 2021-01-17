@@ -2,26 +2,40 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Flask App pour typer votre document</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
 </head>
 <body>
-<header>
-    <div class="container">
-        <h1 class="logo">Typer votre document</h1>
-    </div>
-</header>
+<section class="hero is-primary is-fullheight" xmlns="http://www.w3.org/1999/html">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-6">
+                    <div class="box">
+                        <h1 class="title has-text-primary has-text-centered">Typer votre document</h1>
+                        <form id="form1" method="post" action="/api/upload" enctype="multipart/form-data" class="">
+                            <div class="field mb-5">
+                                <label class="label has-text-centered">Télécharger votre fichier textuel en format .txt ou .rxt</label>
+                                <div class="control has-icons-left">
+                                    <input class="input is-primary is-rounded has-text-centered" type="file" name="myfile" required />
+                                </div>
+                            </div>
 
-<div class="container">
-    {% block content %}
-    <p></p>
-    <form id="form1" method="post" action="/api/upload" enctype="multipart/form-data">
-        <div>
-            <input id="File1" type="file" name="myfile"/>  <!--后台代码中获取文件是通过form的name来标识的-->
-            <input type="submit">Envoyer</input>
+                            <div class="field">
+                                <div class="control has-text-centered">
+                                    <button class="button is-primary is-rounded" type="submit">Envoyer</button>
+<!--                                    <span class="icon is-small is-left">-->
+<!--                                        <i class="fa fa-lock"></i>-->
+<!--                                    </span>-->
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-    </form>
-    {% endblock %}
-</div>
+    </div>
+</section>
 </body>
 </html>
