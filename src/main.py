@@ -5,7 +5,7 @@ from flask import Flask, render_template, redirect, request, abort, url_for, fla
 from werkzeug.utils import secure_filename
 
 from src.models import users
-from src.utils import process, tf_idf_transform, prediction, get_typage_alpha
+from src.utils import process, tf_idf_transform, prediction, get_typage_alpha, get_typage_num
 from src.settings import ALLOWED_EXTENSIONS
 
 version = __import__('version').__version__
@@ -65,16 +65,19 @@ def error():
 
 @app.route('/api/upload', methods=['POST'], strict_slashes=False)
 def api_upload():
+    message1 = ""
+    message2 = ""
     f = request.files['myfile']
     filename = secure_filename(f.filename)
     if filename != '':
         # Vérifier si l'extention est dans la liste autorisée
         file_ext = os.path.splitext(filename)[1]
-        typage_du_document_num = filename[:3]
+        typage_du_document_num = get_typage_num(filename)
         typage_du_document_alpha = get_typage_alpha(typage_du_document_num)
         if file_ext not in ALLOWED_EXTENSIONS:
             # abort(400)
-            return error()
+            flash("L'extention n'est pas acceptable")
+            return render_template('api/upload')
         else:
             try:
                 contenu = f.read()
@@ -89,15 +92,15 @@ def api_upload():
                 top3name, top3pourcentage = top3typage[2][0], top3typage[2][1]
 
                 if typage_du_document_alpha == top1name:
-                    message = "Bravo! La prédiction est correcte!"
+                    message1 = "Bravo! La prédiction est correcte!"
                 else:
-                    message = "Dommage, le typage correct est :\n{}".format(typage_du_document_alpha)
+                    message2 = "Dommage, le typage correct est :\n{}".format(typage_du_document_alpha)
 
                 logger.info("Succès de typer le document : {}".format(filename))
                 return render_template('result.html', top1name=top1name, top1pourcentage=top1pourcentage,
                                        top2name=top2name, top2pourcentage=top2pourcentage,
                                        top3name=top3name, top3pourcentage=top3pourcentage,
-                                       message=message)
+                                       message1=message1, message2=message2)
             except Exception as e:
                 message = "Erreur lors de typer le document : {0}. Erreur : {1}".format(filename, e)
                 logger.error(message)
@@ -107,7 +110,8 @@ def api_upload():
         return error()
 
 
-logger.info(">>> Fin du programme <<<")
-
 if __name__ == '__main__':
+    logger.info(">>> Début du programme <<<")
     app.run(debug=True, port=2020)
+    logger.info(">>> Fin du programme <<<")
+

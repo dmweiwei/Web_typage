@@ -1,4 +1,9 @@
-﻿v1.1.0
+﻿v1.1.0-------------------------------
+Author: MDG
+Date: 18/01/2021
+Message:
+- Ajout de l'authentification
+- Ajout l'affichage du résultat correct ou incorrect, si incorrect, afficher le typage correct.
 
 v1.0.0-------------------------------
 Author: MDG

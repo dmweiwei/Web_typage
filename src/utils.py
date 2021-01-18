@@ -96,3 +96,10 @@ def get_typage_alpha(typage_num):
             if typage_num in row:
                 return row[1]
 
+
+def get_typage_num(filename):
+    if "next" in filename.split("_"):
+        typage_du_document_num = filename[:8]
+    else:
+        typage_du_document_num = filename[:3]
+    return typage_du_document_num
